@@ -1,0 +1,44 @@
+{% extends "marketing/base.html" %}
+
+{% block title %}Welcome to SaaS CRM{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">Powerful CRM for Small and Mid-Sized Businesses</h1>
+    <p class="lead">Manage clients, projects, invoices, HR, and more — all in one platform.</p>
+    <a href="{% url 'marketing:signup' %}" class="btn btn-primary btn-lg me-2">Get Started</a>
+    <a href="{% url 'marketing:features' %}" class="btn btn-outline-primary btn-lg">Explore Features</a>
+</div>
+
+<section class="mb-5">
+    <h2 class="mb-4 text-center">Features</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for feature in features %}
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ feature }}</h5>
+                    <p class="card-text text-muted">Detailed description of {{ feature }} will go here.</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section>
+    <h2 class="mb-4 text-center">What Our Clients Say</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for testimonial in testimonials %}
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <p class="card-text fst-italic">"{{ testimonial.content }}"</p>
+                    <h6 class="card-subtitle text-muted">{{ testimonial.client_name }}, {{ testimonial.client_title }}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
